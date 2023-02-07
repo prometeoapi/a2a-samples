@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sample Widget Usage</title>
+    <script src="https://prometeo-widget-qa.s3.us-west-2.amazonaws.com/1.0.0/static/js/init.js"></script>
+  </head>
+  <body>
+    <button onclick="openWidget()">SHOW WIDGET</button>
+    <script>
+      var widget = Prometeo.init("{{widgetID}}", "{{paymentIntentID}}");
+
+      widget.on(Prometeo.Messaging.CLOSE, () => {
+        console.log('Event: CLOSE');
+      });
+
+      widget.on(Prometeo.Messaging.LOGIN, (session) => {
+        console.log('Event: LOGIN');
+        session.getOwnerInfo();
+        session.getAccounts();
+      });
+
+      widget.on(Prometeo.Messaging.GET_OWNER_INFO, (ownerInfo) => {
+        console.log('Event: GET_OWNER_INFO');
+        console.log(`ownerInfo: ${ownerInfo}`);
+      });
+
+      widget.on(Prometeo.Messaging.GET_ACCOUNTS, (accounts) => {
+        console.log('Event: GET_ACCOUNTS');
+        console.log(`accounts: ${accounts}`);
+      });
+
+      widget.on(Prometeo.Messaging.ERROR, (error) => {
+        console.log('Event: ERROR');
+        console.log(`error: ${error}`);
+      });
+
+      widget.on(Prometeo.Messaging.PAYMENT_SUCCESS, (payload) => {
+        console.log('Event: PAYMENT_SUCCESS');
+        console.log(`payload: ${payload}`);
+      });
+
+      const openWidget = () => {
+        widget.open({allowedFeatureLevel: 2});
+      }
+    </script>
+  </body>
+</html>
