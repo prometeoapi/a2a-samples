@@ -10,9 +10,9 @@ app.engine('mustache', mustacheExpress());
 app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
 
-const WIDGET_ID = "...";
-const URL_PAYMENTS = "https://payment.qa.prometeoapi/api/v1/payment-intent/"
-const PROMETEO_API_KEY = "..."
+const WIDGET_ID = process.env.WIDGET_ID;
+const URL_PAYMENTS = process.env.URL_PAYMENTS || "https://payment.prometeoapi.net/api/v1/payment-intent/"
+const PROMETEO_API_KEY = process.env.PROMETEO_API_KEY
 
 const createIntent = (amount, currency, concept) => {
 

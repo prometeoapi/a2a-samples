@@ -1,10 +1,11 @@
+import os
 import requests
 from flask import Flask
 from flask import render_template
 
-URL_PAYMENTS = "https://payment.qa.prometeoapi/api/v1/payment-intent/"
-WIDGET_ID = "..."
-PROMETEO_API_KEY = "..."
+URL_PAYMENTS = os.environ.get("URL_PAYMENTS", "https://payment.prometeoapi.net/api/v1/payment-intent/")
+WIDGET_ID = os.environ.get("WIDGET_ID")
+PROMETEO_API_KEY = os.environ.get("PROMETEO_API_KEY")
 
 app = Flask(__name__)
 

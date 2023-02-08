@@ -17,5 +17,7 @@ Once installed, start the application using the following command
 
 ```bash
 export FLASK_APP=app.py
+export WIDGET_ID=YOUR-WIDGET-ID
+export PROMETEO_API_KEY=YOUR-API-KEY
 flask run
 ```

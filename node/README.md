@@ -16,5 +16,7 @@ npm install
 Once installed, start the application using the following command
 
 ```bash
+export WIDGET_ID=YOUR-WIDGET-ID
+export PROMETEO_API_KEY=YOUR-API-KEY
 node app.js
 ```
