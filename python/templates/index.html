@@ -22,11 +22,6 @@
         session.getAccounts();
       });
 
-      widget.on(Prometeo.Messaging.GET_OWNER_INFO, (ownerInfo) => {
-        console.log('Event: GET_OWNER_INFO');
-        console.log(`ownerInfo: ${ownerInfo}`);
-      });
-
       widget.on(Prometeo.Messaging.GET_ACCOUNTS, (accounts) => {
         console.log('Event: GET_ACCOUNTS');
         console.log(`accounts: ${accounts}`);
