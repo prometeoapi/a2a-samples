@@ -18,13 +18,6 @@
 
       widget.on(Prometeo.Messaging.LOGIN, (session) => {
         console.log('Event: LOGIN');
-        session.getOwnerInfo();
-        session.getAccounts();
-      });
-
-      widget.on(Prometeo.Messaging.GET_ACCOUNTS, (accounts) => {
-        console.log('Event: GET_ACCOUNTS');
-        console.log(`accounts: ${accounts}`);
       });
 
       widget.on(Prometeo.Messaging.ERROR, (error) => {
