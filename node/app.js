@@ -14,7 +14,7 @@ const WIDGET_ID = process.env.WIDGET_ID;
 const URL_PAYMENTS = process.env.URL_PAYMENTS || "https://payment.prometeoapi.net/api/v1/payment-intent/"
 const PROMETEO_API_KEY = process.env.PROMETEO_API_KEY
 
-const createIntent = (amount, currency, concept) => {
+const createIntent = (amount, currency, concept, external_id) => {
 
   const agent = new https.Agent({
     rejectUnauthorized: false
@@ -33,7 +33,8 @@ const createIntent = (amount, currency, concept) => {
       product_id: WIDGET_ID,
       currency: currency,
       amount: amount,
-      concept: concept
+      concept: concept,
+      external_id: external_id
     },
     httpsAgent: agent
   };
@@ -50,7 +51,7 @@ const createIntent = (amount, currency, concept) => {
 }
 
 app.get('/', (req, res) => {
-  createIntent("100.0", "USD", "Prometeo Test").then(
+  createIntent("100.0", "USD", "Prometeo Test", "Pago 12345").then(
     (intent) => {
       console.log(intent);
       res.render('index', { widgetID: WIDGET_ID, paymentIntentID: intent});
